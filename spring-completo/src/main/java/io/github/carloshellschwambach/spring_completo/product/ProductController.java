@@ -24,9 +24,9 @@ public class ProductController {
         return productRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("{id}")
-    public Product getByName(@PathVariable("id") String id) {
-        return productRepository.findById(id).orElse(null);
+    @GetMapping("/name")
+    public List<Product> getByName(@RequestParam("name") String name) {
+        return productRepository.findByName(name);
     }
 
     @PostMapping
