@@ -10,8 +10,11 @@ public class ProductController {
 
     private ProductRepository productRepository;
 
-    public ProductController(ProductRepository productRepository) {
+    private ProductService productService;
+
+    public ProductController(ProductRepository productRepository, ProductService productService) {
         this.productRepository = productRepository;
+        this.productService = productService;
     }
 
     @GetMapping
@@ -30,8 +33,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public void save(@RequestBody Product product) {
-        productRepository.save(product);
+    public Product save(@RequestBody Product product) {
+        return productService.save(product);
     }
 
     @PutMapping
